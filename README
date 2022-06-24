@@ -1,0 +1,12 @@
+# 1. build the image
+sudo docker build -f dockerfile -t fake-abstracts .
+
+# 2. run the docker image from current directory
+sudo docker run -it -p 1332:8888 -v $PWD/files:/files fake-abstracts /bin/bash
+
+# 3. run Jupiter 
+jupyter notebook --allow-root --ip=0.0.0.0
+
+# 4. copy provided url with token (change 8888 to 1332)
+
+# 5. paste into browser (in host machine), and navigate to /files
