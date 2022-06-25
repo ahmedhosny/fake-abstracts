@@ -35,6 +35,7 @@ RUN  apt-get update \
 # Install some python packages
 RUN pip3 install --no-cache-dir --upgrade pip setuptools wheel
 RUN pip3 install --no-cache-dir future hypothesis
+RUN pip3 install torch==1.10.1+cu102 torchvision==0.11.2+cu102 torchaudio==0.10.1 -f https://download.pytorch.org/whl/torch_stable.html
 
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
