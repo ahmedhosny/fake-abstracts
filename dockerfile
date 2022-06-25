@@ -3,6 +3,7 @@ FROM nvidia/cuda:11.1-runtime-ubuntu20.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
+# https://github.com/NVIDIA/nvidia-docker/issues/1631
 # Update nvidia GPG key
 RUN rm /etc/apt/sources.list.d/cuda.list && \
     rm /etc/apt/sources.list.d/nvidia-ml.list && \
