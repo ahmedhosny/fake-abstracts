@@ -1,5 +1,5 @@
 # Use an official ubuntu runtime as a parent image
-FROM nvidia/cuda:10.2-runtime-ubuntu18.04
+FROM nvidia/cuda:11.1-runtime-ubuntu18.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -35,7 +35,7 @@ RUN  apt-get update \
 # Install some python packages
 RUN pip3 install --no-cache-dir --upgrade pip setuptools wheel
 RUN pip3 install --no-cache-dir future hypothesis
-RUN pip3 install torch==1.10.1+cu102 torchvision==0.11.2+cu102 torchaudio==0.10.1 -f https://download.pytorch.org/whl/torch_stable.html
+RUN pip3 install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
 
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
