@@ -1,8 +1,18 @@
+# ssh into isntance
+
+git clone https://github.com/ahmedhosny/fake-abstracts.git
+
+cd fake-abstracts
+
 # 1. build the image
 sudo docker build -f dockerfile -t fake-abstracts .
 
 # 2. run the docker image from current directory
-sudo docker run -it -p 1332:8888 -v $PWD/files:/files fake-abstracts /bin/bash
+sudo docker run --gpus all -it -p 1332:8888 -v $PWD/files:/files fake-abstracts /bin/bash
+
+cd files
+
+python3 run.py
 
 # 3. run Jupiter 
 jupyter notebook --allow-root --ip=0.0.0.0
@@ -10,3 +20,7 @@ jupyter notebook --allow-root --ip=0.0.0.0
 # 4. copy provided url with token (change 8888 to 1332)
 
 # 5. paste into browser (in host machine), and navigate to /files
+
+# starting instance
+python3 -m deploy.run create_instance hosny-gpu-1 --gpu --a100
+

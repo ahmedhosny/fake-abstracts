@@ -1,5 +1,5 @@
 # Use an official ubuntu runtime as a parent image
-FROM nvidia/cuda:11.5.0-runtime-ubuntu18.04
+FROM nvidia/cuda:10.2-runtime-ubuntu18.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
