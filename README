@@ -8,7 +8,7 @@ cd fake-abstracts
 sudo docker build -f dockerfile -t fake-abstracts .
 
 # 2. run the docker image from current directory
-sudo docker run --gpus all -it -p 1332:8888 -v $PWD/files:/files fake-abstracts /bin/bash
+sudo docker run --gpus all -it -p 1332:8888 -v $PWD/files:/files -v $PWD/data:/data fake-abstracts /bin/bash
 
 cd files
 
