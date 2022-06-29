@@ -97,13 +97,13 @@ def get_dataset_for_gpt2():
     return out_dict
         
   
-data = get_dataset_for_gpt2()
-print (len(data.keys()))
-print (len(data.values()))
-for i in [0, 50000, -1]:
-    print (i)
-    print (list(data.keys())[i])
-    print (list(data.values())[i])
+# data = get_dataset_for_gpt2()
+# print (len(data.keys()))
+# print (len(data.values()))
+# for i in [0, 50000, -1]:
+#     print (i)
+#     print (list(data.keys())[i])
+#     print (list(data.values())[i])
 
 
 

@@ -9,10 +9,10 @@ import nltk
 tokenizer = get_tokenizer(special_tokens=SPECIAL_TOKENS)
 model = get_model(tokenizer, 
                   special_tokens=SPECIAL_TOKENS,
-                  load_model_path='/files/gpt2-data/checkpoint-465/pytorch_model.bin') 
+                  load_model_path='/files/gpt2-data/checkpoint-4900/pytorch_model.bin') 
 
 
-title = "Artificial intelligence in Radiology."
+title = "Cost-effectiveness of artificial intelligence for screening colonoscopy: a modelling study."
 
 prompt = SPECIAL_TOKENS['bos_token'] + title +  SPECIAL_TOKENS['sep_token']
 
@@ -42,7 +42,7 @@ sample_outputs = model.generate(generated,
                                 top_p=0.7,        
                                 temperature=0.9,
                                 repetition_penalty=2.0,
-                                num_return_sequences=2
+                                num_return_sequences=5
                                 )
 
 for i, sample_output in enumerate(sample_outputs):
@@ -59,7 +59,7 @@ sample_outputs = model.generate(generated,
                                 num_beams=5,
                                 repetition_penalty=5.0,
                                 early_stopping=True,      
-                                num_return_sequences=1
+                                num_return_sequences=5
                                 )
 
 for i, sample_output in enumerate(sample_outputs):
