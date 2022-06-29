@@ -51,7 +51,7 @@ SPECIAL_TOKENS  = { "bos_token": "<|BOS|>",
                     
 MAXLEN          = 768  #{768, 1024, 1280, 1600}
 
-TRAIN_SIZE      = 0.8
+TRAIN_SIZE      = 0.9
 
 if USE_APEX:
     TRAIN_BATCHSIZE = 16
@@ -60,7 +60,7 @@ else:
     TRAIN_BATCHSIZE = 8
     BATCH_UPDATE    = 32
 
-EPOCHS          = 15
+EPOCHS          = 50
 LR              = 5e-4
 EPS             = 1e-8
 WARMUP_STEPS    = 1e2
@@ -250,5 +250,5 @@ trainer = Trainer(
 )
 
 #---------------------------------------------------#
-# trainer.train()
-# trainer.save_model()  
+trainer.train()
+trainer.save_model()  

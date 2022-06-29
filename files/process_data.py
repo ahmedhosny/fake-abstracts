@@ -2,15 +2,26 @@ import pandas as pd
 import csv
 from datasets import Dataset, DatasetDict
 import numpy as np 
+import os
 
-FILE = "pubmed-deeplearni-set.txt"
-f = open(FILE, "r")
+# FILE = "pubmed-deeplearni-set.txt"
+# f = open(FILE, "r")
 
+PATH = "/data/pubmed_data"
 PMID_TAG = "PMID- "
 TITLE_TAG = "TI  - "
 ABSTRACT_TAG = "AB  - "
 SPACE = "      "
 papers = []
+
+filenames = os.listdir(PATH)
+
+contents = ""
+for filename in filenames:
+    with open(os.path.join(PATH, filename)) as f:
+        contents += f.read()
+
+print (len(contents.split("\n\n")))
 
 def get_entire_string(idx, lines, tag):
     entire_string = lines[idx].replace(tag, "")
@@ -21,7 +32,7 @@ def get_entire_string(idx, lines, tag):
                 break
     return entire_string
 
-
+# broken now
 def get_dataset():
 
     chuncks = f.read().split("\n\n")
@@ -66,7 +77,7 @@ def get_dataset():
 def get_dataset_for_gpt2():
     out_dict = {}
 
-    chuncks = f.read().split("\n\n")
+    chuncks = contents.split("\n\n")
     for chunk in chuncks:
         lines = chunk.split('\n')
         title = ""
@@ -86,5 +97,13 @@ def get_dataset_for_gpt2():
     return out_dict
         
   
+data = get_dataset_for_gpt2()
+print (len(data.keys()))
+print (len(data.values()))
+for i in [0, 50000, -1]:
+    print (i)
+    print (list(data.keys())[i])
+    print (list(data.values())[i])
+
 
 
